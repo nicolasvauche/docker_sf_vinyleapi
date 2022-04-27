@@ -1,0 +1,58 @@
+@import "../../scss/base/reset";
+@import "../../scss/abstracts/variables";
+@import "../../scss/components/grids";
+
+html {
+    scroll-behavior: smooth;
+
+    body {
+        font-family: $font-family-primary;
+        text-align: center;
+        color: $color-black;
+        background-color: $color-white;
+
+        h1 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: $color-secondary;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: $color-black;
+        }
+
+        .app-main {
+            margin-bottom: 3.125rem;
+            padding: 1.5rem 0;
+
+            section {
+                .loading {
+                    svg {
+                        color: $color-primary;
+                        opacity: 0.25;
+                    }
+                }
+
+                .pagecontrols {
+                    position: absolute;
+                    bottom: 3.625rem;
+                    left: 0;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    padding: 0.5rem;
+                    background-color: rgba($color-white, 0.5);
+                    box-shadow: 0px -1px 3px rgba($color-secondary, 0.5);
+
+                    svg {
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+        }
+    }
+}

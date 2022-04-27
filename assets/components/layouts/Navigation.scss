@@ -1,0 +1,37 @@
+@import "../../scss/abstracts/variables";
+
+.app-navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: $color-white;
+
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        font-size: 0.6rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $color-primary;
+
+        svg {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        &.active {
+            color: $color-black;
+
+            svg {
+                color: $color-secondary;
+            }
+        }
+    }
+}
