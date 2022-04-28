@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import {NavLink} from 'react-router-dom'
 import axios from 'axios'
+import Loading from "../Loading"
 import Grid from "./Grid";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMugHot, faPlusCircle, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 
 const ListArtist = ({pagetitle}) => {
     const [loading, setLoading] = useState(true)
     const [artists, setArtists] = useState([])
+    const [q, setQ] = useState("")
+    const [searchParam] = useState(["name"])
 
     useEffect(() => {
         document.title = 'Les artistes de votre vinylothèque'
@@ -29,13 +32,22 @@ const ListArtist = ({pagetitle}) => {
         fetchArtists()
     }, [])
 
+    const search = items => {
+        return items.filter((item) => {
+            return searchParam.some((newItem) => {
+                return (
+                    item[newItem]
+                        .toString()
+                        .toLowerCase()
+                        .indexOf(q.toLowerCase()) > -1
+                );
+            });
+        });
+    }
+
     return (
         <>
-            {loading && (
-                <p className="loading">
-                    <FontAwesomeIcon icon={faMugHot} size='6x' spin />
-                </p>
-            )}
+            {loading && <Loading />}
 
             {!loading && (
                 <>
@@ -47,7 +59,22 @@ const ListArtist = ({pagetitle}) => {
                         </NavLink>
                     </div>
 
-                    <Grid items={artists} context="artiste" />
+                    <div className="search-wrapper">
+                        <label htmlFor="search-input">
+                            <input
+                                type="search"
+                                name="search-input"
+                                id="search-input"
+                                className="search-input"
+                                placeholder="Rechercher…"
+                                value={q}
+                                onChange={(e) => setQ(e.target.value)}
+                            />
+                            <span className="sr-only">Rechercher un artiste</span>
+                        </label>
+                    </div>
+
+                    <Grid items={search(artists)} context="artiste" />
                 </>
             )}
         </>)

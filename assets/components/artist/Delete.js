@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import {NavLink, useNavigate, useParams} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowCircleLeft, faEdit, faEye, faMugHot, faPlusCircle} from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+import {NavLink, useNavigate, useParams} from "react-router-dom"
+import axios from "axios"
+import Loading from "../Loading"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faArrowCircleLeft, faEdit, faEye, faPlusCircle} from "@fortawesome/free-solid-svg-icons"
 
 const DeleteArtist = () => {
     const {slug} = useParams();
@@ -48,11 +49,7 @@ const DeleteArtist = () => {
 
     return (
         <>
-            {loading && (
-                <p className="loading">
-                    <FontAwesomeIcon icon={faMugHot} size='6x' spin />
-                </p>
-            )}
+            {loading && <Loading />}
 
             {!loading && (
                 <>

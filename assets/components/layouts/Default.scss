@@ -2,6 +2,15 @@
 @import "../../scss/abstracts/variables";
 @import "../../scss/components/grids", '../../scss/components/forms';
 
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 html {
     scroll-behavior: smooth;
 
@@ -49,9 +58,9 @@ html {
                     justify-content: center;
                     background-color: $color-white;
 
-                    svg {
-                        color: $color-secondary;
-                        opacity: 0.25;
+                    img {
+                        width: 75vw;
+                        animation: rotating 2s linear infinite;
                     }
                 }
 
@@ -126,6 +135,20 @@ html {
                             background-color: $color-secondary;
                         }
                     }
+                }
+
+                .search-input {
+                    box-sizing: border-box;
+                    margin: 0 1.5rem 1.5rem;
+                    padding: 0.5rem 1rem;
+                    width: calc(100% - 3rem);
+                    font-family: $font-family-primary;
+                    font-size: 1rem;
+                    text-align: center;
+                    border: none;
+                    background-color: rgba($color-black, 0.05);
+                    box-shadow: 1px 1px 2px rgba($color-black, 0.5);
+                    border-radius: 0.5rem;
                 }
             }
         }

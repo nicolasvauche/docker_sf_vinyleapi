@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import {NavLink, useParams, useNavigate} from "react-router-dom";
 import axios from "axios";
+import Loading from "../Loading"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowCircleLeft, faEye, faMugHot, faPlusCircle, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faArrowCircleLeft, faEye, faPlusCircle, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 const EditArtist = () => {
     const {slug} = useParams()
@@ -60,11 +61,8 @@ const EditArtist = () => {
 
     return (
         <>
-            {loading && (
-                <p className="loading">
-                    <FontAwesomeIcon icon={faMugHot} size='6x' spin />
-                </p>
-            )}
+            {loading && <Loading />}
+
             {!loading && (
                 <>
                     {artist.cover && (

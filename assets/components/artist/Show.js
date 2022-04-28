@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {NavLink, useParams} from "react-router-dom";
 import axios from "axios";
+import Loading from "../Loading"
 import Grid from "./Grid";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowCircleLeft, faEdit, faMugHot, faPlusCircle, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faArrowCircleLeft, faEdit, faPlusCircle, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 const ShowArtist = () => {
     const {slug} = useParams();
@@ -32,11 +33,7 @@ const ShowArtist = () => {
 
     return (
         <>
-            {loading && (
-                <p className="loading">
-                    <FontAwesomeIcon icon={faMugHot} size='6x' spin />
-                </p>
-            )}
+            {loading && <Loading />}
 
             {!loading && (
                 <>

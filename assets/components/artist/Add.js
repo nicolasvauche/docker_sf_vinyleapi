@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import {NavLink, useNavigate} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowCircleLeft, faMugHot} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import Loading from '../Loading'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowCircleLeft} from "@fortawesome/free-solid-svg-icons";
 
 const AddArtist = () => {
     const navigate = useNavigate()
@@ -42,11 +43,8 @@ const AddArtist = () => {
 
     return (
         <>
-            {loading && (
-                <p className="loading">
-                    <FontAwesomeIcon icon={faMugHot} size='6x' spin />
-                </p>
-            )}
+            {loading && <Loading />}
+
             {!loading && (
                 <>
                     <h1>Nouvel artiste</h1>
