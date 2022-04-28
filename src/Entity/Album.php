@@ -14,25 +14,25 @@ class Album
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['album:read'])]
+    #[Groups(['album:read', 'artist:read'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
-    #[Groups(['album:read'])]
+    #[Groups(['album:read', 'artist:read'])]
     private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Gedmo\Slug(fields: ['title'])]
-    #[Groups(['album:read'])]
+    #[Groups(['album:read', 'artist:read'])]
     private $slug;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(['album:read'])]
+    #[Groups(['album:read', 'artist:read'])]
     private $cover;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(['album:read'])]
+    #[Groups(['album:read', 'artist:read'])]
     private $year;
 
     #[ORM\ManyToOne(targetEntity: Artist::class, inversedBy: 'albums')]
@@ -42,7 +42,7 @@ class Album
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'albums')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(['album:read'])]
+    #[Groups(['album:read', 'artist:read'])]
     private $category;
 
     public function getId(): ?int

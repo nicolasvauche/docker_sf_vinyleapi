@@ -11,7 +11,7 @@ const Home = () => {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        document.title = 'Bienvenue' + document.title
+        document.title = 'Bienvenue dans votre vinylothèque'
 
         const fetchCategories = async () => {
             const url = 'http://localhost:7070/api/category'
@@ -48,25 +48,35 @@ const Home = () => {
     return (
         <Layout>
             <section>
-                <h1>Hello !</h1>
-
                 {loading && (
                     <p className="loading">
                         <FontAwesomeIcon icon={faMugHot} size='6x' spin />
                     </p>
                 )}
 
-                <p>
-                    {!loading && (
-                        categories.map(item => (<span key={item.id}>{item.name}</span>))
-                    )}
-                </p>
+                {!loading && (
+                    <>
+                        <h1>Hello !</h1>
 
-                <p>
-                    {!loading && (
-                        artists.map(item => (<span key={item.id}>{item.name}</span>))
-                    )}
-                </p>
+                        <div className="app-grid">
+                            {artists.map(item => (
+                                <div className="grid-item" key={item.id}>
+                                    <h2>{item.name}</h2>
+                                </div>
+                            ))}
+                        </div>
+
+                        <hr />
+
+                        <div className="app-grid">
+                            {categories.map(item => (
+                                <div className="grid-item" key={item.id}>
+                                    <h2>{item.name}</h2>
+                                </div>
+                            ))}
+                        </div>
+                    </>
+                )}
             </section>
         </Layout>
     )

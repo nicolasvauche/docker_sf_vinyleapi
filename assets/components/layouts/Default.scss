@@ -1,6 +1,6 @@
 @import "../../scss/base/reset";
 @import "../../scss/abstracts/variables";
-@import "../../scss/components/grids";
+@import "../../scss/components/grids", '../../scss/components/forms';
 
 html {
     scroll-behavior: smooth;
@@ -12,14 +12,23 @@ html {
         background-color: $color-white;
 
         h1 {
-            margin-bottom: 1rem;
+            margin: 0 0.5rem 1.5rem;
+            padding: 0.5rem;
             font-size: 2rem;
             font-weight: bold;
-            color: $color-secondary;
+            color: $color-white;
+            background-color: $color-secondary;
+            border-radius: 1rem;
         }
 
         h2 {
             font-size: 1.5rem;
+            font-weight: bold;
+            color: $color-black;
+        }
+
+        h3 {
+            font-size: 1.25rem;
             font-weight: bold;
             color: $color-black;
         }
@@ -30,26 +39,92 @@ html {
 
             section {
                 .loading {
+                    position: fixed;
+                    top: 3.5rem;
+                    bottom: 6rem;
+                    left: 0;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: $color-white;
+
                     svg {
-                        color: $color-primary;
+                        color: $color-secondary;
                         opacity: 0.25;
                     }
                 }
 
                 .pagecontrols {
-                    position: absolute;
+                    position: fixed;
                     bottom: 3.625rem;
                     left: 0;
                     right: 0;
+                    z-index: 9999;
                     display: flex;
                     align-items: center;
                     justify-content: space-around;
                     padding: 0.5rem;
-                    background-color: rgba($color-white, 0.5);
+                    background-color: $color-white;
                     box-shadow: 0px -1px 3px rgba($color-secondary, 0.5);
 
-                    svg {
+                    a {
+                        color: inherit;
+
+                        &.info {
+                            color: $color-third;
+                        }
+
+                        &.success {
+                            color: $color-primary;
+                        }
+
+                        &.danger {
+                            color: $color-secondary;
+                        }
+
+                        svg {
+                            font-size: 1.25rem;
+                        }
+                    }
+                }
+
+                .details {
+                    margin-bottom: 2rem;
+
+                    h2 {
+                        margin-bottom: 1rem;
+                        color: $color-secondary;
+                    }
+
+                    img {
+                        margin-bottom: 2rem;
+                        height: 20vh;
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+
+                    button {
+                        box-sizing: border-box;
+                        padding: 0.5rem 1rem;
+                        width: 75%;
+                        font-family: $font-family-primary;
                         font-size: 1.25rem;
+                        font-weight: bold;
+                        text-align: center;
+                        text-transform: uppercase;
+                        border: none;
+                        border-radius: 1rem;
+                        color: $color-white;
+                        background-color: $color-primary;
+                        box-shadow: 1px 1px 2px rgba($color-black, 0.5);
+
+                        &.danger {
+                            color: $color-white;
+                            background-color: $color-secondary;
+                        }
                     }
                 }
             }

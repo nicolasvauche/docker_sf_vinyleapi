@@ -13,7 +13,7 @@ const Navigation = () => {
                 Accueil
             </NavLink>
 
-            <NavLink to='/' activeclassname='active'>
+            <NavLink to='/albums' activeclassname='active'>
                 <FontAwesomeIcon icon={faRecordVinyl} />
                 Albums
             </NavLink>

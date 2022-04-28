@@ -16,23 +16,24 @@ class Artist
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['artist:read'])]
+    #[Groups(['artist:read', 'album:read'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
-    #[Groups(['artist:read'])]
+    #[Groups(['artist:read', 'album:read'])]
     private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Gedmo\Slug(fields: ['name'])]
-    #[Groups(['artist:read'])]
+    #[Groups(['artist:read', 'album:read'])]
     private $slug;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(['artist:read'])]
+    #[Groups(['artist:read', 'album:read'])]
     private $cover;
 
+    #[Groups(['artist:read'])]
     #[ORM\OneToMany(mappedBy: 'artist', targetEntity: Album::class)]
     private $albums;
 

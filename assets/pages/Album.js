@@ -12,20 +12,20 @@ import {
 
 import Layout from '../components/layouts/Default'
 
-const Category = () => {
+const Album = () => {
     const [loading, setLoading] = useState(true)
-    const [categories, setCategories] = useState([])
+    const [albums, setAlbums] = useState([])
 
     useEffect(() => {
-        document.title = 'Les catégories de votre vinylothèque'
+        document.title = 'Les albums de votre vinylothèque'
 
-        const fetchCategories = async () => {
-            const url = 'http://localhost:7070/api/category'
+        const fetchAlbums = async () => {
+            const url = 'http://localhost:7070/api/album'
             setLoading(true);
 
             try {
                 const {data: response} = await axios.get(url);
-                setCategories(response);
+                setAlbums(response);
             } catch (error) {
                 console.error(error.message);
             }
@@ -33,7 +33,7 @@ const Category = () => {
             setLoading(false);
         }
 
-        fetchCategories()
+        fetchAlbums()
     }, [])
 
     return (
@@ -47,7 +47,7 @@ const Category = () => {
 
                 {!loading && (
                     <>
-                        <h1>Les catégories</h1>
+                        <h1>Les albums</h1>
 
                         <div className="pagecontrols">
                             <p><FontAwesomeIcon icon={faArrowCircleLeft} /></p>
@@ -58,9 +58,10 @@ const Category = () => {
                         </div>
 
                         <div className="app-grid">
-                            {categories.map(item => (
+                            {albums.map(item => (
                                 <div className="grid-item" key={item.id}>
-                                    <h2>{item.name}</h2>
+                                    <h2>{item.title}</h2>
+                                    <p>{item.artist.name}</p>
                                 </div>
                             ))}
                         </div>
@@ -71,4 +72,4 @@ const Category = () => {
     )
 }
 
-export default Category
+export default Album

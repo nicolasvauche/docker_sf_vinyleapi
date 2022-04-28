@@ -16,21 +16,21 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['category:read'])]
+    #[Groups(['category:read', 'artist:read'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
-    #[Groups(['category:read'])]
+    #[Groups(['category:read', 'artist:read'])]
     private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Gedmo\Slug(fields: ['name'])]
-    #[Groups(['category:read'])]
+    #[Groups(['category:read', 'artist:read'])]
     private $slug;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    #[Groups(['category:read'])]
+    #[Groups(['category:read', 'artist:read'])]
     private $cover;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Album::class)]
