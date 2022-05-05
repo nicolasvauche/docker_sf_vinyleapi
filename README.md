@@ -11,5 +11,9 @@ Services complémentaires : Adminer / MailDev / PGAdmin4
   2. Dupliquer le fichier .env et le renommer en .env.local
   Modifier ce fichier en renseignant vos informations de connexion à la BDD  
 
-  3. Lancer Webpack Encore :  
+  3. Installer les dépendances :  
+  `composer install`  
+  `yarn install`  
+
+  5. Lancer Webpack Encore :  
   `yarn encore dev --watch`
